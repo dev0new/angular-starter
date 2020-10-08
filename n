@@ -1,0 +1,69 @@
+Hi,
+
+I am following https://akveo.github.io/nebular/docs/guides/create-nebular-page#create-nebular-page for creating a nebular page but it is throwing multiple errors like below:
+
+```
+01: 'nb-sidebar' is not a known element:
+    1. If 'nb-sidebar' is an Angular component, then verify that it is part of this module.
+    2. If 'nb-sidebar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+    
+    4   <nb-sidebar>Sidebar Content</nb-sidebar>
+
+```
+
+I've created a module and when i go to that page it works fine for some random text but when i add nebular code it throw errors.
+
+Code used in component html:
+
+```
+<nb-layout>
+  <nb-layout-header fixed>Company Name</nb-layout-header>
+
+  <nb-sidebar>Sidebar Content</nb-sidebar>
+
+  <nb-layout-column>
+	Page Content <button nbButton>Hello World</button>
+  </nb-layout-column>
+</nb-layout>
+```
+
+module:
+
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { NbSidebarModule, NbLayoutModule, NbButtonModule } from '@nebular/theme';
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    NbLayoutModule,
+    NbSidebarModule, // NbSidebarModule.forRoot(), //if this is your app.module
+    NbButtonModule,
+  ]
+})
+export class DashboardModule { }
+```
+component code:
+
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+```
