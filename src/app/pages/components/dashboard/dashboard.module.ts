@@ -16,6 +16,7 @@ import {
   NbSelectModule,
   NbListModule,
   NbMenuModule,
+  NbContextMenuModule, NbActionsModule
 } from '@nebular/theme';
 @NgModule({
   declarations: [DashboardComponent],
@@ -32,7 +33,9 @@ import {
 	NbIconModule,
 	NbSelectModule,
 	NbListModule,
-	NbMenuModule,
+	NbMenuModule, 
+	NbContextMenuModule, 
+	NbActionsModule,
   ]
 })
 export class DashboardModule { }
