@@ -6,14 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbSidebarModule} from '@nebular/theme';
+import { NbSidebarModule, NbMenuModule} from '@nebular/theme';
 
-import { DashboardComponent } from './pages/components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DashboardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +22,7 @@ import { DashboardComponent } from './pages/components/dashboard/dashboard.compo
     NbLayoutModule,
     NbEvaIconsModule,
     NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

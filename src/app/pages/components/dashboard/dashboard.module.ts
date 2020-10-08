@@ -2,18 +2,37 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { NbSidebarModule, NbLayoutModule, NbButtonModule } from '@nebular/theme';
-import { NbIconModule } from '@nebular/theme';
+import { NbSidebarModule, NbLayoutModule } from '@nebular/theme';
 
+import { DashboardComponent } from './dashboard.component';
+
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbProgressBarModule,
+  NbTabsetModule,
+  NbUserModule,
+  NbIconModule,
+  NbSelectModule,
+  NbListModule,
+  NbMenuModule,
+} from '@nebular/theme';
 @NgModule({
-  declarations: [],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     NbLayoutModule,
     NbSidebarModule,
-    NbButtonModule,
-    NbIconModule,
+	NbButtonModule,
+	NbCardModule,
+	NbProgressBarModule,
+	NbTabsetModule,
+	NbUserModule,
+	NbIconModule,
+	NbSelectModule,
+	NbListModule,
+	NbMenuModule,
   ]
 })
 export class DashboardModule { }
