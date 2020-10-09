@@ -1,42 +1,776 @@
-<nb-layout>
-  <nb-layout-header fixed>Company Name </nb-layout-header>
-
-  <nb-sidebar>
-<nb-card>
-  <nb-menu [items]="items">
-  </nb-menu>
-</nb-card>
-  </nb-sidebar>
-
-  <nb-layout-column>
-	Page Content <button nbButton>Hello World</button>
-  </nb-layout-column>
-</nb-layout>
-
 
 <nb-layout>
-
   <nb-layout-header fixed>
-    <nb-actions class="left">
-      <nb-action class="profile" [nbContextMenu]="items" nbContextMenuPlacement="bottom">Profile</nb-action>
+	<a href="#" class="logotype">LOGO<span>TYPE</span></a>
+    <nb-actions class="right">
+      <nb-action icon="home-outline"></nb-action>
+      <nb-action icon="search-outline"></nb-action>
+      <nb-action icon="edit-outline"></nb-action>
+        <nb-action icon="bell-outline"
+                   badgeDot
+                   badgePosition="top right"
+                   badgeStatus="danger">
+        </nb-action>
+        <nb-action icon="person-outline"
+                   badgeDot
+                   badgePosition="top start"
+                   badgeStatus="warning">
+        </nb-action>
+        <nb-action icon="email-outline"
+                   badgeDot
+                   badgePosition="top left"
+                   badgeStatus="danger">
+        </nb-action>
+      <nb-action class="profile" [nbContextMenu]="items" nbContextMenuPlacement="bottom">
+		<nb-user name="John Doe"></nb-user>
+      </nb-action>
       <nb-action>Settings</nb-action>
     </nb-actions>
   </nb-layout-header>
 
   <nb-sidebar>
-<nb-card>
-  <nb-menu [items]="items">
-  </nb-menu>
-</nb-card>
+	  
+	  
+	  
+	  
+	<nav role="navigation" class="menu">
+
+		
+
+		<div class="overflow-container">
+
+			<ul class="menu-dropdown">
+
+				<li><a href="#">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
+
+				<li class="menu-hasdropdown">
+
+
+					<label title="toggle menu" for="settings">
+					<nb-icon icon="settings-2-outline" class="icon"></nb-icon>
+					<a href="javascript::void(0);">Settings</a>
+        <nb-icon icon="chevron-down-outline" class="downarrow"></nb-icon>
+      </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="settings" />
+
+					<ul class="sub-menu-dropdown">
+						<li><a href="">Profile</a></li>
+						<li><a href="">Security</a></li>
+						<li><a href="">Account</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+
+				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+
+			</ul>
+
+		</div>
+
+	</nav>
+	  
+	  
+	  
+	  
+	  
+
   </nb-sidebar>
 
   <nb-layout-column>
+	  
+<div style="margin-left:300px;">
+	  
+	  
+
+    <button nbButton (click)="showToast('top-right')">Top Right</button>
+    <button nbButton (click)="showToast('bottom-right')">Bottom Right</button>
+    <button nbButton (click)="showToast('top-left')">Top Left</button>
+    <button nbButton (click)="showToast('bottom-left')">Bottom Left</button>
+    <button nbButton (click)="showToast('top-end')">Top End</button>
+    <button nbButton (click)="showToast('bottom-end')">Bottom End</button>
+    <button nbButton (click)="showToast('top-start')">Top Start</button>
+    <button nbButton (click)="showToast('bottom-start')">Bottom Start</button>
+  
+
+	<div class="btn-group btn-divided-group btn-outline-divided-group">
+	  <button nbButton nbPopover="Click Mode" nbPopoverTrigger="click" nbPopoverPlacement="bottom">
+		Click Mode
+	  </button>
+
+	  <button nbButton nbPopover="Hint Mode" nbPopoverTrigger="hint" nbPopoverPlacement="top">
+		Hint Mode
+	  </button>
+
+	  <button nbButton nbPopover="Hover Mode" nbPopoverTrigger="hover" nbPopoverPlacement="bottom">
+		Hover Mode
+	  </button>
+	</div>
+
+    <ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card>
+        <nb-card-header>Template Dialog</nb-card-header>
+        <nb-card-body>{{ data }}</nb-card-body>
+        <nb-card-footer>
+          <button nbButton (click)="ref.close()">Close Dialog</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
+    <button nbButton (click)="open(dialog)">Open Dialog</button>
+
+
+
+	<nb-card>
+	  <nb-card-body>
+		<button nbTooltip="This is a tooltip" nbTooltipStatus="primary" nbButton status="primary">Show Tooltip</button>
+	  </nb-card-body>
+	</nb-card>
+
+	<nb-card>
+	  <nb-card-body class="example-last-child-no-b-margin">
+		<nb-alert status="basic">Basic. You have been successfully authenticated!</nb-alert>
+		<nb-alert status="primary">Primary. You have been successfully authenticated!</nb-alert>
+		<nb-alert status="success">Success. You have been successfully authenticated!</nb-alert>
+		<nb-alert status="info">Info. You have been successfully authenticated!</nb-alert>
+		<nb-alert status="danger">Danger. You have been successfully authenticated!</nb-alert>
+		<nb-alert status="warning">Warning. You have been successfully authenticated!</nb-alert>
+		<div class="control-status-example">
+		  <nb-alert status="control">Control. You have been successfully authenticated!</nb-alert>
+		</div>
+	  </nb-card-body>
+	</nb-card>
+
+    <nb-card size="small">
+      <nb-card-body>
+
+        <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation()">
+          <nb-tab tabTitle="Tab 1" [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="giant">
+            <p>
+              A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+              Originally, nebula was a name for any diffuse astronomical object.
+            </p>
+          </nb-tab>
+
+          <nb-tab tabTitle="Tab 2" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+            <p>
+              Nebular's primary goal is to assemble together and connect the most awesome features and libraries
+              creating an efficient ecosystem to speed up and simplify the development.
+            </p>
+          </nb-tab>
+
+        </nb-tabset>
+      </nb-card-body>
+    </nb-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <router-outlet></router-outlet>
-    
+    </div>
   </nb-layout-column>
 
   <nb-layout-footer fixed>
   </nb-layout-footer>
 
 </nb-layout>
+
+
+	<!--  
+	<nb-card>
+	  <nb-menu [items]="items">
+	  </nb-menu>
+	</nb-card>-->
+
+<style>
+
+.left{
+	left: 0px;
+	position: absolute;	
+}
+
+.right{
+	right: 0px;
+	position: absolute;	
+}
+
+/* Menu Styles */
+
+.primary-nav {
+	position: fixed;
+	z-index: 999;
+}
+
+.menu {
+	position: relative;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+	
+}
+
+.open-panel {
+  border: none;
+  background-color:#fff;
+  padding: 0;
+}
+
+.hamburger {
+	background: #fff;
+	position: relative;
+	display: block;
+	text-align: center;
+	padding: 13px 0;
+	width: 50px;
+  height: 73px;
+	left: 0;
+  top: 0;
+	z-index: 1000;
+  cursor: pointer;
+}
+
+.hamburger:before {
+	content:"\2630"; /* hamburger icon */
+	display: block;
+  color: #000;
+  line-height: 32px;
+  font-size: 16px;
+}
+
+.openNav .hamburger:before {
+	content:"\2715"; /* close icon */
+	display: block;
+  color: #000;
+  line-height: 32px;
+  font-size: 16px;
+}
+
+.hamburger:hover:before {
+  color: #777;
+}
+
+.primary-nav .menu li {
+	position: relative;
+}
+
+.menu .icon {
+	position: absolute;
+	top: 12px;
+	left: 2px;
+	pointer-events: none;
+  height: 25px;
+  color: #fff;
+}
+
+.menu,
+.menu a,
+.menu a:visited {
+  color: #646363;
+  text-decoration: none!important;
+	position: relative;
+}
+
+.menu a {
+  display: block;
+  white-space: nowrap;
+  padding: 1em;
+  font-size: 14px;
+  margin:0px 12px;
+}
+
+.menu a:hover {
+	color: #111;
+}
+
+.menu-dropdown li:hover{
+	background: #eeecec;
+}
+
+
+.menu {
+	margin-bottom: 3em;
+}
+
+.menu-dropdown li {
+	display:block;
+	position:relative;
+}
+
+.menu-dropdown li .icon {
+	color: #777;
+}
+
+.menu-dropdown li:hover .icon {
+	color: #111;
+}
+
+
+
+.menu label {
+  margin-bottom: 0;
+  display: block;
+}
+
+.menu label:hover {
+  cursor: pointer;
+}
+
+.menu input[type="checkbox"] {
+  display: none;
+}
+
+input#menu[type="checkbox"] {
+  display: none;
+}
+
+
+
+
+
+
+.sub-menu-dropdown {
+	display: none;
+}
+
+.new-wrapper {
+	position: absolute;
+	left: 50px;
+  width: calc(100% - 50px);
+  transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#menu:checked + ul.menu-dropdown {
+    
+		left: 0;
+    -webkit-animation: all .45s cubic-bezier(0.77, 0, 0.175, 1);
+            animation: all .45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.sub-menu-checkbox:checked + ul.sub-menu-dropdown {
+    display: block!important;
+    -webkit-animation: grow .45s cubic-bezier(0.77, 0, 0.175, 1);
+            animation: grow .45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+.openNav .new-wrapper {
+  position: absolute;
+  transform: translate3d(200px, 0, 0);
+  width: calc(100% - 250px);
+  transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+.downarrow {
+  background: transparent;
+	position: absolute;
+	right: 10px;
+	top: 12px;
+  color: #777;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  display: block;
+}
+
+.downarrow:hover {
+  color: #fff;
+}
+
+.menu {
+	position: absolute;
+	display: block;
+	left: 0px;
+  top: 0;
+	width: 250px;
+  transition: all 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+  background-color: #fff;
+	z-index: 999;
+}
+
+.menu-dropdown {
+  top: 0;
+  overflow-y: auto;
+}
+
+.overflow-container {
+  position: relative;
+  height: calc(100vh - 73px)!important;
+  overflow-y: auto;
+  z-index: -1;
+  display:block;
+}
+
+a.logotype {
+  left: 55px;
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #000;
+  font-size: 21px;
+  padding: 10px;
+}
+
+.menu a.logotype span {
+  font-weight: 400;
+}
+
+.menu a.logotype:hover {
+  color: #777;
+}
+
+.sub-menu-dropdown {
+	background-color: #eeecec;
+}
+
+.menu:hover {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.openNav .menu:hover {
+	position: absolute;
+	left: -200px;
+	top 73px;
+}
+
+.openNav .menu {
+  top 73px;
+		transform: translate3d(200px, 0, 0);
+    transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+	
+	/* label.hamburger {
+		display: none;
+	} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* look and feel only, not needed for core menu*/
+
+@-webkit-keyframes grow {
+	
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  50% {
+    display: block;
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+	
+}
+
+@keyframes grow {
+	
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  50% {
+    display: block;
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1
+  }
+	
+}
+
+
+
+
+
+
+
+
+
+
+/* Text meant only for screen readers. */
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Resposive Typography */
+
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: #000;
+	font-size: 1em;
+	line-height: 1.5;
+	font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+  font-weight: 800;
+}
+
+dfn, cite, em, i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: #eee;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-size: 15px;
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code, kbd, tt, var {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+mark, ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+.light {
+    color:#ddd;
+}
+
+strong {
+	font-weight: 600;
+}
+
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+p.big {
+	font-size: 140%;
+	line-height: 1.3em;
+}
+
+p.small {
+	font-size: 80%;
+	}
+
+blockquote {
+	display:block;
+    margin: 1em 20px;
+    padding: 0 1em;
+    position:relative;
+}
+
+blockquote:before {
+
+}
+
+blockquote cite,
+blockquote em,
+blockquote i {
+	font-style: italic;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	position: relative;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: .5ex;
+}
+
+
+p {
+    font-size: 1em;
+    margin: 0 0 2em 0;
+}
+
+article:last-of-type, p:last-of-type {
+	margin-bottom: 0;
+}
+
+p.intro {
+    font-size:1.25em;
+    line-height: 1.5;
+    font-weight:300;
+     margin: 0 0 1.5em 0;
+}
+
+h1, h2 {
+    letter-spacing: -1px;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  margin: 0 0 0.5em 0;
+  line-height: 1.1;
+}
+
+h1, .h1 {font-size: 2.074em;}
+
+h2, .h2 {font-size: 1.728em;}
+
+h3, .h3 {font-size: 1.44em;}
+
+h4, .h4 {font-size: 1.2em;}
+
+
+
+/* Medium Screen Typography - Scale: 1.333 Perfect Fourth (thanks http://type-scale.com/)  */
+
+@media screen and (min-width: 42em) {
+
+	h1, .h1 { letter-spacing: -2px; }
+
+	h1, .h1 {font-size: 3.157em;}
+
+	h2, .h2 {font-size: 2.369em;}
+
+	h3, .h3 {font-size: 1.777em;}
+
+	h4, .h4 {font-size: 1.333em;}
+
+	p { font-size:1.0625em; }
+
+	p.intro { font-size:1.3em; }
+
+}
+
+
+/* Large Screen Typography  - Scale: 1.414 Augmented Fourth (thanks http://type-scale.com/)  */
+
+@media screen and (min-width: 72em) {
+
+	h1 { letter-spacing: -3px; }
+
+	h1, .h1 { margin-bottom: 0.35em; font-size: 3.998em; }
+
+	h2, .h2  { font-size: 2.827em; }
+
+	h3, .h3 { font-size: 1.999em; }
+
+	h4, .h4 { font-size: 1.414em; }
+
+	p { font-size:1.125em; }
+
+	p.intro { font-size:1.4em; }
+
+}
+
+
+
+
+
+</style>

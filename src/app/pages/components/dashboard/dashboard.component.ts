@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 
-import { NbMenuItem } from '@nebular/theme';
+import { NbMenuItem, NbToastrService, NbSidebarService, NbDialogService } from '@nebular/theme';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,8 @@ import { NbMenuItem } from '@nebular/theme';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+	private index: number = 0;
+  constructor(private toastrService: NbToastrService, private sidebarService: NbSidebarService, private dialogService: NbDialogService) { }
 
 
   items: NbMenuItem[] = [
@@ -60,5 +61,23 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  showToast(position) {
+    this.toastrService.show(
+      'This is super toast message',
+      `This is toast number: ${++this.index}`,
+      { position });
+  }
+  toggle() {
+    this.sidebarService.toggle(true);
+    return false;
+  }
+  open(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, { context: 'this is some additional data passed to dialog' });
+  }
+  loading = false;
 
+  toggleLoadingAnimation() {
+    this.loading = true;
+    setTimeout(() => this.loading = false, 1000)
+  }
 }

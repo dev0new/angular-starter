@@ -10,13 +10,16 @@ import {
   NbButtonModule,
   NbCardModule,
   NbProgressBarModule,
-  NbTabsetModule,
-  NbUserModule,
   NbIconModule,
   NbSelectModule,
   NbListModule,
   NbMenuModule,
-  NbContextMenuModule, NbActionsModule
+  NbContextMenuModule, NbActionsModule,NbPopoverModule,NbTooltipModule,
+  NbUserModule,
+  NbAlertModule,
+  NbSpinnerModule,
+  NbTabsetModule,
+  
 } from '@nebular/theme';
 @NgModule({
   declarations: [DashboardComponent],
@@ -28,14 +31,18 @@ import {
 	NbButtonModule,
 	NbCardModule,
 	NbProgressBarModule,
-	NbTabsetModule,
-	NbUserModule,
 	NbIconModule,
 	NbSelectModule,
 	NbListModule,
 	NbMenuModule, 
 	NbContextMenuModule, 
 	NbActionsModule,
+	NbPopoverModule,
+	NbTooltipModule,
+	NbUserModule,
+	NbAlertModule,
+	NbSpinnerModule,
+	NbTabsetModule,
   ]
 })
 export class DashboardModule { }
